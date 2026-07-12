@@ -1,5 +1,6 @@
 # Tools to convert to Markdown
 
+
 ## PDF to Markdown
 
 Clone the repository
@@ -9,4 +10,11 @@ git clone --depth 1 https://github.com/microsoft/markitdown.git
 
 ```bash
 docker compose up --build pdf2md
+```
+
+
+## EPUB to Markdown
+
+```bash
+docker compose up --build epub2md
 ```
