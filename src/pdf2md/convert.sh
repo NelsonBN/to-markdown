@@ -18,6 +18,18 @@ do
     if [ $? -eq 0 ]
     then
       echo "SUCCESS: $filename.md"
+
+      images_dir="/.output/$filename.images"
+      mkdir -p "$images_dir"
+      pdfimages -png "$pdf" "$images_dir/img" 2>/dev/null || true
+      if [ -z "$(ls -A "$images_dir" 2>/dev/null)" ]
+      then
+        rmdir "$images_dir"
+      else
+        image_count=$(ls -1 "$images_dir" | wc -l)
+        echo "IMAGES: $image_count extracted -> $images_dir/"
+      fi
+
       count=$((count + 1))
     else
       echo "FAILED: $filename"

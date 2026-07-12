@@ -16,9 +16,9 @@ services:
   pdf2md:
     container_name: pdf2md
     build:
-      context: ./markitdown
+      context: ./src/pdf2md
       dockerfile: Dockerfile
-    image: markitdown:latest
+    image: pdf2md:latest
     volumes:
       - ./.input:/.input
       - ./.output:/.output

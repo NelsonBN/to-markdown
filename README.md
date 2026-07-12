@@ -32,21 +32,24 @@ docker compose up --build epub2md
 
 ## pdf2md - PDF to Markdown
 
-Converts every `.pdf` file in `.input/` using [markitdown](https://github.com/microsoft/markitdown).
-
-> Requires cloning the markitdown submodule first:
-> ```bash
-> git clone --depth 1 https://github.com/microsoft/markitdown.git
-> ```
+Converts every `.pdf` file in `.input/` using [markitdown](https://github.com/microsoft/markitdown) (cloned automatically during the Docker build) and extracts embedded images using `pdfimages`.
 
 **Input:** `.input/*.pdf`
 
 **Output** (per file):
 ```bash
 .output/
-└── <filename>.pdf.md
+├── <filename>.pdf.md
+└── <filename>.pdf.images/   # Extracted images (if any)
 ```
 
 ```bash
 docker compose up --build pdf2md
+```
+
+
+## All-in-One
+
+```bash
+docker compose up --build
 ```
